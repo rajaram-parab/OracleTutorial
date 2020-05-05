@@ -1,0 +1,54 @@
+ 
+ DECLARE 
+ TYPE myArray  is table of Number;
+ col_var myArray :=myArray(9,18,27,36,45,54,63,81,90); 
+ BEGIN
+ col_var.delete(3,6);
+ for i in 1..col_var.last
+ loop
+ if(col_var.Exists(i)) then
+ dbms_output.put_line(col_var(i));
+ else
+ dbms_output.put_line('No data Found at Index '||i);
+ end if;
+ end loop;
+ END;
+ /
+ 
+ 
+   DECLARE 
+ TYPE myArray  is table of Number;
+ col_var myArray :=myArray(9,18,27,36,45,54,63,81,90); 
+ BEGIN
+ col_var.delete(3,6);
+
+FORALL idx in 1..col_var.last
+insert into test2 values(col_var(idx));
+
+ END;
+ /
+---Output is with Error
+ 
+ 
+ 
+ create table test2(
+mat number(5)
+);
+ 
+  DECLARE 
+ TYPE myArray  is table of Number;
+ col_var myArray :=myArray(9,18,27,36,45,54,63,81,90); 
+ rec_num  number;
+ BEGIN
+ col_var.delete(3,6);
+
+FORALL idx in indices of col_var
+insert into test2 values(col_var(idx));
+
+select count(*) into rec_num from test2;
+
+DBMS_OUTPUT.PUT_LINE('Records '|| rec_num);
+
+ END;
+ /
+ delete from test2

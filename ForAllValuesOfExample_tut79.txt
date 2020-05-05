@@ -1,0 +1,31 @@
+
+ 
+create table test3(
+mat number(5)
+);
+ 
+DECLARE
+TYPE MyArray is table of Number;
+var_col MyArray := MyArray(9,18,27,36,45,54,63,81,90,99);
+row_num number;
+Type var_index is table of pls_integer index by pls_integer;
+index_row var_index;
+BEGIN
+
+index_row(5):=3;
+index_row(25):=5;
+index_row(35):=7;
+index_row(74):=10;
+
+forall idx in values of  index_row
+insert into test3 values(var_col(idx));
+
+select count(*) into row_num from test3;
+
+DBMS_OUTPUT.PUT_LINE('Records '|| row_num);
+
+
+END;
+ /
+ 
+ select * from test3
