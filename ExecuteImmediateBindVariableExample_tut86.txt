@@ -1,0 +1,30 @@
+   
+   create table test5(
+   stu_name varchar2(5)
+   );
+   
+   
+   Declare
+   str_query varchar2(100);
+   BEGIN
+   str_query :='insert into test5 values(:value)';
+   Execute immediate str_query using 'DIL';
+   END;
+   
+   
+   select * from test5;
+   
+   Delete from test5;
+   
+   
+   DROP table Test5;
+   
+   DECLARE
+   str_stm varchar2(150);
+   begin
+   str_stm := 'update Test5 set stu_name=:new_name where stu_name=:old_name';
+   EXECUTE IMMEDIATE str_stm using 'RAJA','RAM';
+   end;
+   /
+   
+   select * from Test5;

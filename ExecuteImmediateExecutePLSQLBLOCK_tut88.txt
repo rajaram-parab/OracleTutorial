@@ -1,0 +1,14 @@
+   DECLARE 
+   str_stm1 varchar2(500);
+   BEGIN
+   str_stm1 :=   'DECLARE 
+   str_stm varchar2(100);
+   rec_name varchar2(10);
+   BEGIN
+   str_stm :=''select stu_name  from test5'';
+   Execute Immediate str_stm into rec_name;
+   DBMS_OUTPUT.PUT_LINE(''Name is :''||rec_name);
+   END;';
+   Execute Immediate str_stm1 ;
+   
+   END;

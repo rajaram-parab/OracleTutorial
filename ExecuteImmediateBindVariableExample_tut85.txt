@@ -1,0 +1,22 @@
+
+
+   
+   create table test5(
+   stu_name varchar2(5)
+   );
+   
+   
+   Declare
+   str_query varchar2(100);
+   BEGIN
+   str_query :='insert into test5 values(:value)';
+   Execute immediate str_query using 'STEVE';
+   END;
+   
+   
+   select * from test5;
+   
+   Delete from test5;
+   
+   
+   DROP table Test5;

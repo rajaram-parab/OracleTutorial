@@ -1,0 +1,14 @@
+-- select * from dual;
+
+DECLARE
+var_stm varchar(20) :='xyz';
+BEGIN
+if(var_stm !='xyz') then 
+DBMS_OUTPUT.PUT_LINE(var_stm);
+elsif(var_stm ='xyz') then
+DBMS_OUTPUT.PUT_LINE('Matched');
+else
+DBMS_OUTPUT.PUT_LINE('In Else Clause');
+end if;
+DBMS_OUTPUT.PUT_LINE('abc');
+END;

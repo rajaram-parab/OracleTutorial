@@ -1,0 +1,34 @@
+Create table employee(
+emp_id number(10);
+emp_name varchar2(20)
+);
+/
+
+insert into employee values(1,'Raja');
+/
+
+DECLARE
+--Using Normal varchar datatype
+
+var_emp_name varchar2(20); 
+BEGIN
+--Using Into Clause and assigning value for variable
+select emp_name into var_emp_name from employee;
+
+END;
+/
+
+DECLARE 
+
+--Using Anchor datatype
+var_emp_name employee.emp_name%TYPE;
+
+BEGIN
+--Using Into Clause and assigning value for variable
+select emp_name into var_emp_name from employee;
+
+END;
+/
+
+ALTER TABLE employee
+  MODIFY emp_name number(10);

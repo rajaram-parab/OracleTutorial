@@ -1,0 +1,25 @@
+SET Serveroutput on;
+Declare 
+    sql_query varchar2(150);
+    emp_tot number(3);
+BEGIN
+    sql_query := 'Select count(*) from MSTCHANNELUSER';
+    Execute IMMEDIATE sql_query into emp_tot;
+    DBMS_OUTPUT.PUT_LINE('Total Records '||emp_tot);
+END;
+/
+
+
+SET Serveroutput on;
+Declare 
+    sql_query varchar2(150);
+    emp_tot number(3);
+BEGIN
+    sql_query := 'Create table Test4(
+                mat varchar(32),
+                mat1 number(10)
+    )';
+    Execute IMMEDIATE sql_query ;
+
+END;
+/  

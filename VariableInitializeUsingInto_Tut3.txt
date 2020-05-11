@@ -1,0 +1,30 @@
+Create table employee(
+emp_id number(10);
+emp_name varchar2(20)
+);
+/
+
+insert into employee values(1,'Raja');
+/
+
+DECLARE
+var_emp_name varchar2(20); 
+BEGIN
+--Using Into Clause and assigning value for variable
+select emp_name into var_emp_name from employee;
+
+END;
+/
+
+insert into employee values(2,'Ram');
+/
+
+DECLARE
+var_emp_name varchar2(20); 
+BEGIN
+--Using Into Clause and assigning mutliple value for variable with where clause for returning one value
+select emp_name into var_emp_name from employee
+where emp_id=1;
+
+END;
+/

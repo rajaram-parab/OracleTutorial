@@ -1,0 +1,19 @@
+   select * from Test5 ;
+   
+   
+   DECLARE
+   Type nt_fname is table of varchar2(20);
+   fname nt_fname;
+   query_stm varchar2(150);
+   BEGIN
+   query_stm := 'select stu_name from Test5';
+   execute immediate query_stm bulk collect into fname;
+   
+   for idx in 1..fname.COUNT
+   loop
+   DBMS_OUTPUT.PUT_LINE(idx ||'-'||fname(idx));
+   end loop;
+   
+   END;
+   
+   

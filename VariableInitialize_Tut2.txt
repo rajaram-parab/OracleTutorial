@@ -1,0 +1,13 @@
+DECLARE
+
+str_name := 'Rajaram Parab';
+
+BEGIN
+
+--initilize of Variable
+DBMS_OUTPUT.PUT_LINE('My Name is :' || str_name);
+
+END;
+/
+
+
