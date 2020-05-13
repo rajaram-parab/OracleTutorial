@@ -1,0 +1,42 @@
+create table trainer
+(
+    full_name varchar2(20)
+);    
+
+
+create table subject
+(
+    subject_name varchar2(20)
+);
+
+
+insert into trainer values('Rubina');
+
+insert into subject values('oracle');
+
+create or replace view vw_classroom
+as select full_name,subject_name from trainer,subject;
+
+select * from vw_classroom;
+
+
+
+select * from trainer;
+select * from subject;
+
+select * from vw_classroom;
+
+
+create or replace trigger tr_delete_vw
+instead of delete on vw_classroom
+for each row
+begin
+
+delete from trainer where full_name = :OLD.full_name;
+delete from subject where subject_name = :OLD.subject_name;
+
+end;
+
+
+
+delete from vw_classroom where subject_name='Oracle';

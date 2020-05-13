@@ -1,0 +1,36 @@
+create table trainer
+(
+    full_name varchar2(20)
+);    
+
+
+create table subject
+(
+    subject_name varchar2(20)
+);
+
+
+insert into trainer values('Rubina');
+
+insert into subject values('oracle');
+
+create or replace view vw_classroom
+as select full_name,subject_name from trainer,subject;
+
+select * from vw_classroom;
+
+
+insert into vw_classroom  values('Seema','Java');
+
+create or replace trigger tr_modify_classroom_vw
+instead of  insert on vw_classroom
+for each row
+begin
+    insert into trainer values(:NEw.full_name);
+    insert into subject values(:NEw.subject_name);
+end;
+
+
+
+select * from trainer;
+select * from subject;

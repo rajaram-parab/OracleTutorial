@@ -1,0 +1,40 @@
+create table trainer
+(
+    full_name varchar2(20)
+);    
+
+
+create table subject
+(
+    subject_name varchar2(20)
+);
+
+
+insert into trainer values('Rubina');
+
+insert into subject values('oracle');
+
+create or replace view vw_classroom
+as select full_name,subject_name from trainer,subject;
+
+select * from vw_classroom;
+
+
+
+select * from trainer;
+select * from subject;
+
+select * from vw_classroom;
+update vw_classroom set full_name='Tony' where subject_name='Java';
+
+
+create or replace trigger tr_update_vw
+instead of update on vw_classroom
+for each row
+begin
+
+update trainer set full_name =:NEW.full_name where full_name =:OLD.full_name;
+
+update subject set subject_name =:NEW.subject_name where subject_name=:OLD.subject_name;
+
+end;
