@@ -1,0 +1,26 @@
+DECLARE
+
+type nest_tab is table of number;
+vr_nt nest_tab :=nest_tab('10','13','25','45','77');
+BEGIN
+
+--In Oracle Nested Table Array Index Start with 1
+DBMS_OUTPUT.PUT_LINE(vr_nt(1));
+DBMS_OUTPUT.PUT_LINE(vr_nt(5));
+
+END;
+/
+
+DECLARE
+
+type nest_tab is table of number;
+vr_nt nest_tab :=nest_tab('10','13','25','45','77');
+BEGIN
+
+    for idx in 1..vr_nt.COUNT 
+loop
+DBMS_OUTPUT.PUT_LINE('Value Stored at index '|| idx || ' is '||vr_nt(idx));
+end loop;
+END;
+/
+
