@@ -1,0 +1,30 @@
+CREATE TABLE EMPLOYEE
+(
+emp_id number,
+emp_name varchar(20),
+salary number
+);
+
+
+insert into EMPLOYEE
+values(200,'RANI',4000);
+
+DECLARE
+type wk_refcur is ref cursor;
+cur_var wk_refcur;
+
+var_name EMPLOYEE.EMP_NAME%TYPE;
+var_salary EMPLOYEE.salary%TYPE;
+
+BEGIN
+
+OPEN cur_var for select emp_name,salary from employee where emp_id=100;
+
+FETCH cur_var into var_name,var_salary;
+
+CLOSE cur_var;
+
+DBMS_OUTPUT.PUT_LINE('Employee '||var_name||' Salary: '||var_salary);
+
+END;
+END;

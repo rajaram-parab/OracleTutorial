@@ -1,0 +1,59 @@
+DECLARE
+    TYPE my_nested_table is table of Number;
+    var_nt  my_nested_table := my_nested_table(2,4,6,8,10,12,14,16,18,20);
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] before delete is '||var_nt(5));
+
+END;
+
+
+DECLARE
+    TYPE my_nested_table is table of Number;
+    var_nt  my_nested_table := my_nested_table(2,4,6,8,10,12,14,16,18,20);
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] before delete is '||var_nt(5));
+var_nt.DELETE(5);
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] after delete is '||var_nt(5));
+
+END;
+
+
+DECLARE
+    TYPE my_nested_table is table of Number;
+    var_nt  my_nested_table := my_nested_table(2,4,6,8,10,12,14,16,18,20);
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] before delete is '||var_nt(5));
+var_nt.DELETE(5);
+if(var_nt.EXISTS(5)) then
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] is '||var_nt(5));
+else
+DBMS_OUTPUT.PUT_LINE(' Value at index [5] does not exists');
+end if;
+
+END;
+
+DECLARE
+    TYPE my_nested_table is table of Number;
+    var_nt  my_nested_table := my_nested_table(2,4,6,8,10,12,14,16,18,20);
+BEGIN
+--Range Delete 
+var_nt.DELETE(2,6);
+for idx in var_nt.FIRST..var_nt.LAST 
+loop
+
+if(var_nt.EXISTS(idx)) then
+
+DBMS_OUTPUT.PUT_LINE(' Value at index ' || idx||' is '||var_nt(idx));
+
+end if;
+
+end loop;
+
+
+
+END;
+
+

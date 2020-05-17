@@ -15,5 +15,4 @@ BEGIN
 
 DBMS_OUTPUT.PUT_LINE('Value after 3rd Index '|| var_nt.NEXT(3));
 DBMS_OUTPUT.PUT_LINE('Value after 3rd Index '|| var_nt(var_nt.NEXT(3)));
-
-END;
+  
